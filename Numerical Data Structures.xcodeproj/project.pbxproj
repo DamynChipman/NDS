@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		EF52F38F2156C1F0008E3319 /* Numerical Data Structures */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Numerical Data Structures"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF52F3922156C1F0008E3319 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EF52F39A2156C232008E3319 /* Matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +58,7 @@
 		EF52F3912156C1F0008E3319 /* Numerical Data Structures */ = {
 			isa = PBXGroup;
 			children = (
+				EF52F39A2156C232008E3319 /* Matrix.h */,
 				EF52F3922156C1F0008E3319 /* main.cpp */,
 			);
 			path = "Numerical Data Structures";

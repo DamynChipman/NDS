@@ -5,9 +5,15 @@
 //   PROJECT:   Numerical Data Structures
 
 #include <iostream>
+#include "Matrix.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    
+    int rows = 3;
+    int cols = 3;
+    
+    Matrix<int> values(rows, cols);
+    std::cout << values.get(1, 1) << std::endl;
+    
     return 0;
 }
