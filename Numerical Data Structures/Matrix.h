@@ -7,6 +7,10 @@
 #ifndef Matrix_h
 #define Matrix_h
 
+#include <string>
+#include <fstream>
+#include <iomanip>
+
 /**
  * @class Matrix<T>
  *
@@ -84,6 +88,74 @@ public:
     void set(const int i, const int j, T value) { data_[i][j] = value; }
     
     /**
+     * @function view
+     * @brief Output contents of matrix to cout
+     */
+    void view() {
+        for (size_t i = 0; i < NROWS_; i++) {
+            for (size_t j = 0; j < NCOLS_; j++) {
+                std::cout << data_[i][j] << ((j == NCOLS_-1) ? "" : " ");
+            }
+            std::cout << std::endl;
+        }
+    }
+    
+    /**
+     * @function max
+     * @brief Gets the max value in matrix.
+     */
+    T max() {
+        T maxValue = data_[0][0];
+        for (int i = 1; i < NROWS_; i++) {
+            for (int j = 1; j < NCOLS_; j++) {
+                if (data_[i][j] > maxValue) { maxValue = data_[i][j]; }
+            }
+        }
+        return maxValue;
+    }
+    
+    /**
+     * @function min
+     * @brief Gets the min value in matrix.
+     */
+    T min() {
+        T minValue = data_[0][0];
+        for (int i = 1; i < NROWS_; i++) {
+            for (int j = 1; j < NCOLS_; j++) {
+                if (data_[i][j] < minValue) { minValue = data_[i][j]; }
+            }
+        }
+        return minValue;
+    }
+    
+    /**
+     * @function write
+     * @brief Write contents of matrix to file
+     * @param fileName : string : Name of file to write to
+     * @param delim : char : Delimiter for file. Defaults to ','.
+     * @param numPrecision : int : Output number precision. Defaults to 4.
+     */
+    void write(std::string fileName, char delim=',', int numPrecision=4){
+        std::ofstream out(fileName);
+        if (out.is_open()) {
+            for (int i = 0; i < NROWS_; i++) {
+                for (int j = 0; j < NCOLS_; j++) {
+                    out << std::fixed << std::setprecision(numPrecision) << data_[i][j] << delim;
+                }
+                out << std::endl;
+            }
+        }
+        else {
+            std::cerr << "Failure to open and write to file in Matrix.h" << std::endl;
+        }
+        out.close();
+    }
+    
+    // Getter functions
+    int getNROWS() const { return NROWS_; }
+    int getNCOLS() const { return NCOLS_; }
+    
+    /**
      * @function ~Matrix
      * @brief DESTRUCTOR.
      * @discussion Deletes memory of dynamic array.
@@ -101,6 +173,5 @@ private:
     const int NCOLS_; // Number of columns.
     T** data_; // 2D dynamic array container.
 };
-
 
 #endif /* Matrix_h */
